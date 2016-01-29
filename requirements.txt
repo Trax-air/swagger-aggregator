@@ -1,0 +1,6 @@
+flask==0.10.1
+requests>=1.8.1
+shortuuid==0.4.3
+swagger-parser==0.1
+simplejson==3.8.1
+PyYAML==3.11
