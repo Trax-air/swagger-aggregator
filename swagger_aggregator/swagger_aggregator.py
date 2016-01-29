@@ -304,7 +304,7 @@ class SwaggerAggregator(object):
             """
             # Get url from spec and flask query
             url = u'{0}{1}?{2}'.format(uri[func.__name__], path[func.__name__], flask.request.query_string)
-            p = re.compile(ur'{(.+)}')
+            p = re.compile('{(.+)}')
             for path_param in re.findall(p, url):
                 for k, v in kwargs.iteritems():
                     if k == path_param:

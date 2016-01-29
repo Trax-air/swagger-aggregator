@@ -57,11 +57,11 @@ def test_get_aggregate_swagger(yaml_file, mocker):
     mocker.patch('__builtin__.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     mock_request = mocker.patch('swagger_aggregator.swagger_aggregator.requests')
-    mock_request.get.return_value.json.side_effect = ['swagger1', 'swagger2']
+    mock_request.get.return_value.json.return_value = 'swagger'
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
-    assert agg.get_aggregate_swagger() == {'identifications': {'spec': 'swagger1', 'url': 'http://trax/v1'},
-                                           'ingestion': {'spec': 'swagger2', 'url': 'http://air/v1'}}
+    assert agg.get_aggregate_swagger() == {'identifications': {'spec': 'swagger', 'url': 'http://trax/v1'},
+                                           'ingestion': {'spec': 'swagger', 'url': 'http://air/v1'}}
 
 
 def test_exclude_paths(mocker, yaml_file):
@@ -103,7 +103,7 @@ def test_get_spec_from_uri(mocker, yaml_file):
     identifications_spec = {
         'paths': {
             'test': {
-                'get': {'get'}
+                'get': {'get': {}}
             },
             'path': {
                 'get': {},
@@ -115,7 +115,7 @@ def test_get_spec_from_uri(mocker, yaml_file):
     ingestion_spec = {
         'paths': {
             'test2': {
-                'post': {'post'}
+                'post': {'post': {}}
             },
             'path2': {
                 'get': {},
@@ -127,8 +127,8 @@ def test_get_spec_from_uri(mocker, yaml_file):
     agg.swagger_apis = {'identifications': {'spec': identifications_spec, 'url': 'http://trax/v1'},
                         'ingestion': {'spec': ingestion_spec, 'url': 'http://air/v1'}}
 
-    assert agg.get_spec_from_uri('test', 'get') == ({'get'}, 'http://trax/v1')
-    assert agg.get_spec_from_uri('test2', 'post') == ({'post'}, 'http://air/v1')
+    assert agg.get_spec_from_uri('test', 'get') == ({'get': {}}, 'http://trax/v1')
+    assert agg.get_spec_from_uri('test2', 'post') == ({'post': {}}, 'http://air/v1')
 
 
 def test_generate_operation_id_function(mocker, yaml_file):
