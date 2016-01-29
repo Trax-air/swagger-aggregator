@@ -142,7 +142,7 @@ class SwaggerAggregator(object):
             A dict of swagger spec.
         """
         if 'apis' in self.yaml_file:  # Check if apis is in the config file
-            for api_name, api_url in self.yaml_file['apis'].iteritems():
+            for api_name, api_url in self.yaml_file['apis'].items():
                 if api_name not in self.swagger_apis:
                     # Get the swagger.json
                     try:
@@ -173,9 +173,9 @@ class SwaggerAggregator(object):
 
         # Remove excluded paths
         swagger_filtered = deepcopy(swagger)
-        for path, path_spec in swagger['paths'].iteritems():
+        for path, path_spec in swagger['paths'].items():
             if path in path_exclude.keys():
-                for action, _ in path_spec.iteritems():
+                for action, _ in path_spec.items():
                     if action in path_exclude[path]:
                         del swagger_filtered['paths'][path][action]
         return swagger_filtered
@@ -190,12 +190,12 @@ class SwaggerAggregator(object):
             Aggregate of all apis.
         """
         swagger_apis = deepcopy(self.get_aggregate_swagger())
-        for api, api_spec in swagger_apis.iteritems():
+        for api, api_spec in swagger_apis.items():
             # Rename definition to avoid collision.
             api_spec['spec'] = json.loads(json.dumps(api_spec['spec']).replace('#/definitions/', u'#/definitions/{0}'.format(api)))
 
             if 'definitions' in api_spec['spec']:
-                for definition_name, definition_spec in api_spec['spec']['definitions'].iteritems():
+                for definition_name, definition_spec in api_spec['spec']['definitions'].items():
                     if not definition_name.startswith(api):
                         swagger['definitions'][u'{0}{1}'.format(api, definition_name)] = definition_spec
                     else:
@@ -226,8 +226,8 @@ class SwaggerAggregator(object):
         path_list = {}
         action_list = {}
         current_module = sys.modules[__name__]
-        for path, path_spec in base_swagger['paths'].iteritems():
-            for action, action_spec in path_spec.iteritems():
+        for path, path_spec in base_swagger['paths'].items():
+            for action, action_spec in path_spec.items():
                 # Generate function name and get spec and api url for the path
                 func_name = uuid()
                 path_list[func_name] = path
@@ -243,7 +243,7 @@ class SwaggerAggregator(object):
         self.swagger_parser = SwaggerParser(swagger_dict=deepcopy(base_swagger))
 
         # Remove exclude_fields from swagger
-        for definition_name, definition_spec in base_swagger['definitions'].iteritems():
+        for definition_name, definition_spec in base_swagger['definitions'].items():
             if definition_name in self.yaml_file.get('exclude_fields', {}):
                 for key in self.yaml_file['exclude_fields'][definition_name]:
                     if key in definition_spec['required']:
@@ -306,7 +306,7 @@ class SwaggerAggregator(object):
             url = u'{0}{1}?{2}'.format(uri[func.__name__], path[func.__name__], flask.request.query_string)
             p = re.compile('{(.+)}')
             for path_param in re.findall(p, url):
-                for k, v in kwargs.iteritems():
+                for k, v in kwargs.items():
                     if k == path_param:
                         url = url.replace('{{{0}}}'.format(k), str(v))
 
@@ -341,7 +341,7 @@ class SwaggerAggregator(object):
         Returns:
             (path spec, microservice url)
         """
-        for api, api_spec in self.swagger_apis.iteritems():
-            for path_name, path_spec in api_spec['spec']['paths'].iteritems():
+        for api, api_spec in self.swagger_apis.items():
+            for path_name, path_spec in api_spec['spec']['paths'].items():
                 if path_name == url:
                     return path_spec[action], api_spec['url']
