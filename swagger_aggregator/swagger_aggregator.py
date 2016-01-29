@@ -6,6 +6,7 @@ import logging
 import os
 import random
 import re
+import six
 import sys
 import time
 import yaml
@@ -122,7 +123,7 @@ class SwaggerAggregator(object):
         Returns:
             Parsed value.
         """
-        if isinstance(value, (str, unicode)):
+        if isinstance(value, (six.text_type, six.string_types)):
             for key in self.args_dict.keys():
                 value = value.replace(key, self.args_dict[key])
         return value
