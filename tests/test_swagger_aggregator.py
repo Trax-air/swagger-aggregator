@@ -36,7 +36,10 @@ def yaml_file():
 
 
 def test_get_args(yaml_file, mocker):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
@@ -44,7 +47,10 @@ def test_get_args(yaml_file, mocker):
 
 
 def test_parse_value(yaml_file, mocker):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
@@ -54,7 +60,10 @@ def test_parse_value(yaml_file, mocker):
 
 
 def test_get_aggregate_swagger(yaml_file, mocker):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     mock_request = mocker.patch('swagger_aggregator.swagger_aggregator.requests')
     mock_request.get.return_value.json.return_value = 'swagger'
@@ -78,7 +87,10 @@ def test_exclude_paths(mocker, yaml_file):
         }
     }
 
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
@@ -96,7 +108,10 @@ def test_exclude_paths(mocker, yaml_file):
 
 
 def test_get_spec_from_uri(mocker, yaml_file):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
@@ -132,7 +147,10 @@ def test_get_spec_from_uri(mocker, yaml_file):
 
 
 def test_generate_operation_id_function(mocker, yaml_file):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
@@ -165,7 +183,10 @@ def test_generate_operation_id_function(mocker, yaml_file):
 
 
 def test_filter_definition(mocker, yaml_file):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     agg = SwaggerAggregator('config.yaml', 'trax', 'air')
 
@@ -190,7 +211,10 @@ def test_filter_definition(mocker, yaml_file):
 
 
 def test_generate_swagger_json(mocker, yaml_file):
-    mocker.patch('__builtin__.open', create=True)
+    try:
+        mocker.patch('__builtin__.open', create=True)
+    except Exception:  # Python3
+        mocker.patch('builtins.open', create=True)
     mocker.patch('swagger_aggregator.swagger_aggregator.yaml.load', return_value=yaml_file)
     mock_yaml = mocker.patch('swagger_aggregator.swagger_aggregator.yaml.dump')
     mocker.patch('swagger_aggregator.swagger_aggregator.SwaggerParser')
