@@ -65,4 +65,4 @@ Setup
 License
 -------
 
-swagger-aggregator is licensed under http://opensource.org/licenses/GPL-3.0.
+swagger-aggregator is licensed under http://opensource.org/licenses/MIT.

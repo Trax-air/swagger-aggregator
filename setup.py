@@ -19,7 +19,7 @@ test_requirements = [str(i.req) for i in parse_requirements('requirements_dev.tx
 
 setup(
     name='swagger_aggregator',
-    version='0.1',
+    version='0.1.0',
     description="Aggregate several swagger APIs in one",
     long_description=readme + '\n\n' + history,
     author="Cyprien Guillemot",
@@ -33,13 +33,13 @@ setup(
     include_package_data=True,
     setup_requires=['pytest-runner'],
     install_requires=requirements,
-    license="GPL",
+    license="MIT",
     zip_safe=False,
     keywords='swagger, aggregator, API, REST, swagger-aggregator',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',

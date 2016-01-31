@@ -14,5 +14,6 @@ deploy:
     secure: oBtWHITB6xBoLitN3tynYJO4pwxmA73Wayx89g171rUiYZlvGRMp7nxfdvW656UdJ1wNTy4vr9lHHZVPBV1z7qM/hn5lZ9fXOowQjPE6p7FbeHNl2CpVvTePTt3/6ld6P3qwf2HhOfWG0Y83Ho9p/VDZ94p/0OZKDb0YCU0Ab9aKMjrQ5g2P5cQM/VgERELISrTWxHVF24go6mUXNRty02FtHfHoqgxLjp4XOkrq6/gB6F+pjRpgFpJWp1cQoNoT5pxMngpdNHLYbJLgIO8NKS+/riWuaAadjIRTppSljlq/hd/8B28vdFxIwG/n0Bmib4+oEExDyzCjECwJOt+RaWdYGJvIeH7QV746muFLjdmvOO3LJTqnJjPC4zwBy90cKL/yOVPT1F355V3P8IqzaT0KoiXpoWTJb8UAPNvtyA2ToRCavaz2TR0vAyWC/1Qpg1Zr4CueeIfnaHLVpI0UULhLkowzDkEWWJRf3OWJ/I7MevnBc0qTIj2P7W5iJoAUxf21W0Tmr2Kf68QVaNkDoL1jpgXZQ9aKYa4ZI+ok9GnmwEqvijcigKy7bRyI5xfXMRT/yQbTh58QHKglmuObEn7Ek5Y/rx2HiYttYPeXHRx5tw2wwMl4MiXoVis7jfvwAAsbH0EISOVpQKzR5OzYtrUIX7aKQSnn1aNjFitkSVc=
   on:
     tags: true
+    branch: master
     repo: Trax-air/swagger-aggregator
     condition: $TOXENV == py27
