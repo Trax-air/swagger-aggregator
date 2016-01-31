@@ -19,7 +19,7 @@ test_requirements = [str(i.req) for i in parse_requirements('requirements_dev.tx
 
 setup(
     name='swagger_aggregator',
-    version='0.1.0',
+    version='0.1.1',
     description="Aggregate several swagger APIs in one",
     long_description=readme + '\n\n' + history,
     author="Cyprien Guillemot",
