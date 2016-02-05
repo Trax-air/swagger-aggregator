@@ -7,7 +7,10 @@
 .. image:: https://badges.gitter.im/Trax-air/swagger-aggregator.svg
   :alt: Join the chat at https://gitter.im/Trax-air/swagger-aggregator
   :target: https://gitter.im/Trax-air/swagger-aggregator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-  
+.. image:: https://www.versioneye.com/user/projects/56b4abb50a0ff5002c85f71f/badge.svg
+  :alt: Dependency Status
+  :target: https://www.versioneye.com/user/projects/56b4abb50a0ff5002c85f71f  
+
 swagger-aggregator
 ==================
 
