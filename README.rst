@@ -10,6 +10,10 @@
 .. image:: https://www.versioneye.com/user/projects/56b4abb50a0ff5002c85f71f/badge.svg
   :alt: Dependency Status
   :target: https://www.versioneye.com/user/projects/56b4abb50a0ff5002c85f71f  
+.. image:: https://img.shields.io/pypi/v/swagger-aggregator.svg
+    :target: https://pypi.python.org/pypi/swagger-aggregator/
+.. image:: https://img.shields.io/pypi/dw/swagger-aggregator.svg
+    :target: https://pypi.python.org/pypi/swagger-aggregator/
 
 swagger-aggregator
 ==================
