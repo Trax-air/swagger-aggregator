@@ -73,18 +73,23 @@ def retry_http(call):
 class SwaggerAggregator(object):
     """Create an API from an aggregation of API."""
 
-    def __init__(self, config_file, *args):
+    def __init__(self, config_file, *args, **kwargs):
         """Init the aggregation.
 
         Extra args will be used to replace args in the config file.
 
         Args:
             config_file: aggregation config.
+            *args: Arguments indicated at the top of the yaml config file.
+            **kwargs: Other keywords, such as:
+              - timeout (float): Default timeout for get requests in seconds. Defaults to 0.1.
         """
         self.config_file = config_file
         self.swagger_args = args
         self.errors = []
         self.swagger_apis = {}
+
+        self.timeout = kwargs.get('timeout', 0.1)
 
         # Get config
         with open(self.config_file, 'r') as f:
@@ -134,7 +139,7 @@ class SwaggerAggregator(object):
         Args:
             api_url: url of the microservice.
         """
-        return requests.get('{0}/swagger.json'.format(self.parse_value(api_url))).json()
+        return requests.get('{0}/swagger.json'.format(self.parse_value(api_url)), timeout=self.timeout).json()
 
     def get_aggregate_swagger(self):
         """Get swagger files associated with the aggregates.
