@@ -14,6 +14,7 @@ import yaml
 import flask
 import requests
 from requests.exceptions import ConnectionError
+from requests.exceptions import RequestException
 from shortuuid import uuid
 from simplejson.scanner import JSONDecodeError
 
@@ -155,10 +156,10 @@ class SwaggerAggregator(object):
                         self.swagger_apis[api_name] = {'spec': self.get_swagger_from_url(api_url),
                                                        'url': self.parse_value(api_url)}
                         self.errors.remove(api_url)
-                    except (ConnectionError, JSONDecodeError):
+                    except (JSONDecodeError, RequestException) as exc:
                         if api_url not in self.errors:
                             self.errors.append(api_url)
-                        logger.warning(u'Cannot get swagger from {0}'.format(api_url))
+                        logger.warning(u'Cannot get swagger from {0}: {1}'.format(api_url, repr(exc)))
                     except ValueError:
                         logger.info(u'Cannot remove {0} from errors'.format(api_url))
         return self.swagger_apis
