@@ -1,18 +1,9 @@
 .. image:: https://travis-ci.org/Trax-air/swagger-aggregator.svg?branch=master
    :alt: Travis status
-   :target: https://travis-ci.org/Trax-air/swagger-aggregator
-.. image:: https://www.quantifiedcode.com/api/v1/project/9713faf531d646bc9aca9a14441fa285/badge.svg
-  :target: https://www.quantifiedcode.com/app/project/9713faf531d646bc9aca9a14441fa285
-  :alt: Code issues
 .. image:: https://badges.gitter.im/Trax-air/swagger-aggregator.svg
   :alt: Join the chat at https://gitter.im/Trax-air/swagger-aggregator
   :target: https://gitter.im/Trax-air/swagger-aggregator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-.. image:: https://www.versioneye.com/user/projects/56b4abb50a0ff5002c85f71f/badge.svg
-  :alt: Dependency Status
-  :target: https://www.versioneye.com/user/projects/56b4abb50a0ff5002c85f71f  
 .. image:: https://img.shields.io/pypi/v/swagger-aggregator.svg
-    :target: https://pypi.python.org/pypi/swagger-aggregator/
-.. image:: https://img.shields.io/pypi/dw/swagger-aggregator.svg
     :target: https://pypi.python.org/pypi/swagger-aggregator/
 
 swagger-aggregator
