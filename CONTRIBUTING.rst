@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/cyprieng/swagger_aggregator/issues.
+Report bugs at https://github.com/Trax-air/swagger-aggregator/issues.
 
 If you are reporting a bug, please include:
 
